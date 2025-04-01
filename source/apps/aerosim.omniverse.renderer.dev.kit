@@ -1,0 +1,36 @@
+[package]
+title = "Aerosim Omniverse kit dev app"
+description = "An Aerosim kit application with all the development extensions enabled."
+version = "1.0.0"
+keywords = ["AeroSim", "dev", "app"]
+
+[dependencies]
+"omni.app.dev" = {}
+"aerosim.omniverse.extension" = {}
+"cesium.omniverse" = {}
+"omni.kit.livestream.webrtc" = {}  # Livestream extension
+
+[settings.app.exts]
+folders.'++' = ["${app}/../exts"] # Make extensions from this repo available.
+
+[settings]
+exts."cesium.omniverse".showOnStartup = false
+app.useFabricSceneDelegate = true
+app.usdrt.scene_delegate.enableProxyCubes = false
+app.usdrt.scene_delegate.geometryStreaming.enabled = false
+
+[settings.app.livestream]
+skipCapture = 1  # livestream skipCapture ON for local streaming
+webrtcEtli = true  # Only log error or critical level issues.
+
+[[test]]
+enabled = false
+
+[settings.exts."omni.kit.registry.nucleus"]
+registries = [
+# FOR PRODUCTION (public prod registry)
+	{ name = "kit/default", url = "https://ovextensionsprod.blob.core.windows.net/exts/kit/prod/shared" },
+	{ name = "kit/sdk", url = "https://ovextensionsprod.blob.core.windows.net/exts/kit/prod/sdk/${kit_version_short}/${kit_git_hash}" },
+# FOR COMMUNITY (always active)
+	{ name = "kit/community", url = "https://dw290v42wisod.cloudfront.net/exts/kit/community" },
+]

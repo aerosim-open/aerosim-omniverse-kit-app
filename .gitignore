@@ -1,0 +1,39 @@
+﻿# All folders starting with _ are local.
+_*/
+
+# Compiled python files.
+*.py[cod]
+
+# Visual Studio files.
+/.vs
+**/.vscode/ipch
+
+# macOS files.
+.DS_Store
+
+# Generated license file.
+PACKAGE-DEPS.yaml
+
+# Internal CI/CD files.
+/.teamcity
+/tools/ci
+
+# Cesium extension files.
+**/cesium.*
+
+# Log files.
+*.log
+
+.vscode/settings.json
+
+# Extensions
+source/extensions/
+
+# Pixel Streaming
+pixel-streaming/
+
+# Packages
+package-*
+
+# Pixel Streaming generated files
+*NvStreamer*
