@@ -1,0 +1,36 @@
+# An application is really just an extension that depends on other extensions
+[package]
+title = "AeroSim Omniverse Renderer"
+description = "An aerosim omniverse renderer application with just the viewport."
+keywords = ["app", "AeroSim", "viewport"] # Makes this browsable in the UI under the "experience" filter.
+
+# Add new extensions here if you want them enabled automatically when this app is run.
+# Otherwise, you can search for them in the extensions window and enable/disable them.
+[dependencies]
+"omni.kit.uiapp" = {}
+"omni.kit.viewport.bundle" = {}
+"omni.kit.viewport.rtx" = {}
+"omni.kit.window.extensions" = {}
+"omni.kit.window.file" = {}
+"omni.kit.window.toolbar" = {}
+
+"aerosim.omniverse.extension" = {}
+"cesium.omniverse" = {}
+
+[settings]
+app.content.emptyStageOnStart = true
+app.exts.folders.'++' = ["${app}/../exts"] # Make extensions from this repo available.
+app.window.title = "AeroSim Omniverse Renderer"
+app.window.width = 1700
+app.window.height = 900
+exts."cesium.omniverse".showOnStartup = false
+app.useFabricSceneDelegate = true
+
+[settings.exts."omni.kit.registry.nucleus"]
+registries = [
+# FOR PRODUCTION (public prod registry)
+#	{ name = "kit/default", url = "https://ovextensionsprod.blob.core.windows.net/exts/kit/prod/shared" },
+#	{ name = "kit/sdk", url = "https://ovextensionsprod.blob.core.windows.net/exts/kit/prod/sdk/${kit_version_short}/${kit_git_hash}" },
+# FOR COMMUNITY (always active)
+#	{ name = "kit/community", url = "https://dw290v42wisod.cloudfront.net/exts/kit/community" },
+]
